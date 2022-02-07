@@ -1,0 +1,39 @@
+﻿
+@{
+    Layout = null;
+
+}
+@{
+    string status = @Model.Selection;
+    string display;
+    string color;
+    if (status == "YES")
+    {
+        display = "Good";
+        color = "Green";
+    }
+    else
+    {
+        display = "bad";
+        color = "Red";
+    }
+
+}     
+
+
+<html>
+    <body style = "background-color:@color">
+       Hi @Model.UNAME You are doing @display
+    
+    </body>
+</html>
+
+@{
+    if (@TempData["msg"]!= null)
+    {
+        <script>
+           alert('@TempData["msg"]');
+        </script>
+    }
+}
+

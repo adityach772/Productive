@@ -1,0 +1,72 @@
+﻿@{
+    Layout = null;
+}
+@{
+    
+    string date = DateTime.Now.ToString("yyyy-MM-dd");
+    string end_hour = DateTime.Now.ToString("hh");
+    int end_int = int.Parse(end_hour);
+
+    string EMeridiem = DateTime.Now.ToString("tt");
+    string SMeridiem ;
+    int start_int;
+    string start_hour ;
+
+    if ( EMeridiem == "PM" &&  end_int == 12 )
+    {
+        SMeridiem = "AM";
+    }
+    else if ( EMeridiem == "AM" &&  end_int == 12 )
+    {
+        SMeridiem = "PM";
+    }
+    else
+    {
+        SMeridiem = EMeridiem;
+    }
+
+    if (end_int == 1)
+        start_int = 12;
+    else
+        start_int = end_int - 1;
+
+    start_hour = start_int + " " + SMeridiem;
+    end_hour = end_int + " " + EMeridiem;
+    // DateOnly dateOnly = DateOnly.FromDateTime(DateTime.Now);
+    }
+
+<html>
+   
+    <head>
+       
+    </head>
+    <h1> Are you productive this hour? of @date between hours  @start_hour and @end_hour? </h1>
+
+    <body style="background-color:Orange">
+
+    <form action="UpdateRecords" method="post" >
+      Name : <input type="text" name = "uname" />
+      Yes:  <input type="radio" id= "Yes" name="Selection" value="YES">
+      No:  <input type="radio"  id = "No" name="Selection" value="NO">
+
+      <input type = "hidden" name = "StartHour" value = @start_int />
+      <input type = "hidden" name = "SMeridiem" value = @SMeridiem />
+      <input type = "hidden" name = "EndHour" value = @end_int />
+      <input type = "hidden" name = "EMeridiem" value = @EMeridiem />
+      
+      <br />
+      <br />
+      <br />
+     <input type="submit"  value = "UpdateMyHour"/>
+     </form>
+     
+     <div>
+        <form action="ShowRecords" method="post">
+        <input type = "hidden" name = "Clicked" value = "Yes" />
+            If you want to see previous records : Click Here => <input id = "update" type="submit"  value = "See Data"/>
+        </form>
+    </div>
+    
+    </body>
+</html>
+
