@@ -16,13 +16,6 @@ namespace Productive.Models
             try
             {
                 SqlCommand cmd = new SqlCommand();
-                //cmd.CommandType = CommandType.StoredProcedure;
-                //cmd.Parameters.AddWithValue("@UNAME", mf.uname);
-                //cmd.Parameters.AddWithValue("@Status", mf.Selection);
-                //cmd.Parameters.AddWithValue("@StartHour", mf.StartHour);
-                //cmd.Parameters.AddWithValue("@SMeridiem", mf.SMeridiem);
-                //cmd.Parameters.AddWithValue("@EndHour", mf.EndHour);
-                //cmd.Parameters.AddWithValue("@EMeridiem", mf.EMeridiem);
                 con.Open();
                 //cmd.ExecuteNonQuery();
                 cmd.Connection = con;

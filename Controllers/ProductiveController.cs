@@ -18,7 +18,7 @@ namespace Productive.Controllers
             return View("UpdateFormUI");
         }
 
-
+        [Route("UpdateRecords")]
         public IActionResult UpdateRecords(ModelForm mf)
         {
             SqlConnection con = new SqlConnection(
